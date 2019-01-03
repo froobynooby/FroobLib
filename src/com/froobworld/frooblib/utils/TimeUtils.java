@@ -74,4 +74,23 @@ public class TimeUtils {
         return length;
     }
 
+    public static String unparseTime(long time) {
+        if (time <= 0) {
+            return null;
+        }
+        long left = time;
+        long days = (left / 1000 / 60 / 60 / 24);
+        left -= (days * 24 * 60 * 60 * 1000);
+
+        long hours = (left / 1000 / 60 / 60);
+        left -= (hours * 60 * 60 * 1000);
+
+        long minutes = (left / 1000 / 60);
+        left -= (minutes * 60 * 1000);
+
+        long seconds = (left / 1000 / 60 / 60);
+
+        return days + "d:" + hours + "h:" + minutes + "m:" + seconds + "s";
+    }
+
 }
